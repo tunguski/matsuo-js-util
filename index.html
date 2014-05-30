@@ -6,6 +6,7 @@
   <title>matsuo-js-util</title>
 
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="bower_components/highlightjs/styles/github.css" />
 	<link rel="stylesheet" href="main.css" />
 
 </head>
@@ -24,7 +25,85 @@
 
   <div class="feature-section">
     <div class="container">
-      <h2></h2>
+      <h2>Small, invisible additions</h2>
+      <p>
+        This library adds only small set of functions to <code>underscore</code> and <code>Array</code> type. This
+        additions are commonly used by other libraries used outside.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="feature-section">
+    <div class="container">
+      <h2>Underscore additional functions</h2>
+      <table class="table">
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>uncapitalize(str)</code></td>
+          <td>Returns <code>str</code> with first case lower.</td>
+        </tr>
+        <tr>
+          <td><code>capitalize(str)</code></td>
+          <td>Returns <code>str</code> with first case upper.</td>
+        </tr>
+        <tr>
+          <td><code>isDefined(object)</code></td>
+          <td>Returns <code>true</code> if passed parameter is defined.</td>
+        </tr>
+        <tr>
+          <td><code>strContains(str, it)</code></td>
+          <td>Returns <code>true</code> if first parameter contains second.</td>
+        </tr>
+        <tr>
+          <td><code>endsWith(str, suffix)</code></td>
+          <td>Returns <code>true</code> if first parameter ends with suffix.</td>
+        </tr>
+        <tr>
+          <td><code>getByPath(object, path)</code></td>
+          <td>
+            <p>
+              Returns object that is accessed by path in first parameter object. That is:
+              <pre><code>_.getByPath({ elem: { val: "x" }}, 'elem.val')</code></pre> returns <code>"x"</code>.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>setByPath(object, path, value)</code></td>
+          <td>
+            <p>
+              Sets property in <code>object</code> accessed by <code>path</code> to <code>value</code>. That means after:
+            <pre><code>_.setByPath({ elem: { val: {} }}, 'elem.val.foo', "x")</code></pre>
+            invoking <code>elem.val.foo</code> will return <code>"x"</code>.
+            If any part of <code>path</code> is undefined, nothing will be set.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>getOrCreate(object, path)</code></td>
+          <td>
+            <p>
+              Returns object that is accessed by path in first parameter object. That is:
+            <pre><code>_.getByPath({ elem: { val: "x" }}, 'elem.val')</code></pre> returns <code>"x"</code>.
+            </p>
+            <p>
+              If any part of <code>path</code> is undefined it will be created as empty object <code>{}</code>. Newly
+              created object described by last part of <code>path</code> will be returned.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>serializeObject(dom)</code></td>
+          <td>
+            <p>
+              Returns serialized form of <code>dom</code>.
+            </p>
+          </td>
+        </tr>
+      </table>
       <p>
       </p>
     </div>
@@ -33,16 +112,45 @@
 
   <div class="feature-section">
     <div class="container">
-      <h2></h2>
-      <p>
-      </p>
-    </div>
-  </div>
-
-
-  <div class="feature-section">
-    <div class="container">
-      <h2></h2>
+      <h2>Array object extensions</h2>
+      <table class="table">
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>Array.prototype.pushArray(arr)</code></td>
+          <td>
+            <p>
+              Pushes all elements of <code>arr</code> to <code>this</code> array.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Array.prototype.byProp(property, id)</code></td>
+          <td>
+            <p>
+              Returns first element that has <code>property</code> equal to <code>id</code>.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Array.prototype.remove(element)</code></td>
+          <td>
+            <p>
+              Removes all instances of <code>element</code> from <code>this</code> array.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Array.prototype.filter(fun)</code></td>
+          <td>
+            <p>
+              Returns new array containing all elements for which <code>fun(element)</code> returns <code>true</code>.
+            </p>
+          </td>
+        </tr>
+      </table>
       <p>
       </p>
     </div>
