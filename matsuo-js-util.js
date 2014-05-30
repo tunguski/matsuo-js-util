@@ -97,6 +97,7 @@
 
 Array.prototype.pushArray = function(arr) {
   this.push.apply(this, arr);
+  return this;
 };
 
 Array.prototype.byProp = function(property, id) {
