@@ -11,6 +11,44 @@ describe("Matsuo IT JS Util", function() {
       }
     };
 
+    it("filterRequestData works", function() {
+      var obj = {
+        a: "is",
+        b: "",
+        c: null
+      };
+
+      var result = _.filterRequestData(obj);
+
+      expect(result.a).toBe('is');
+      expect(result.b).toBe(undefined);
+      expect(result.c).toBe(undefined);
+    });
+
+    it("paramsObject works", function() {
+      var obj = {
+        date: new Date(2013,2,1,1,10) ,
+        obj: { id: 3 },
+        str: "str"
+      };
+
+      var result = _.paramsObject(obj);
+
+      expect(result.date).toBe('2013-03-01T00:10:00.000Z');
+      expect(result.obj).toBe('[object Object]');
+      expect(result.str).toBe('str');
+    });
+
+    it("toUrlParams works", function() {
+      var obj = {
+        date: new Date(2013,2,1,1,10) ,
+        obj: { id: 3 },
+        str: "str"
+      };
+
+      expect(_.toUrlParams(obj)).toBe('date=2013-03-01T00:10:00.000Z&obj=[object Object]&str=str&');
+    });
+
     it("getByPath works", function() {
       expect(_.getByPath(obj, 'prop.value')).toBe('test');
     });

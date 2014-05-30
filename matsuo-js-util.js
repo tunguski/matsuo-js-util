@@ -34,6 +34,56 @@
     endsWith: function(str, suffix) { return str.indexOf(suffix, str.length - suffix.length) !== -1; },
 
     /**
+     * Removes from passed object all properties that value is empty string, null or undefined. Additionally removes
+     * all properties which name start from '$' - that are angular internal properties.
+     */
+    filterRequestData: function(obj) {
+      for(var x in obj) {
+        if(obj[x] == ''
+            || obj[x] == null
+            || obj[x] == undefined
+          // angular properties
+            || x.indexOf('$') == 0)
+          delete obj[x];
+      }
+
+      return obj;
+    },
+
+
+    /**
+     * Returns object that all properties are serialized to string.
+     */
+    paramsObject: function(obj) {
+      function serialize(value) {
+        if (value instanceof Date) {
+          return value.toISOString();
+        } else {
+          return value.toString();
+        }
+      }
+
+      var result = {};
+      for(var x in _.filterRequestData(obj)) {
+        result[x] = serialize(obj[x]);
+      }
+
+      return result;
+    },
+
+    /**
+     * Transforms object to url query part.
+     */
+    toUrlParams: function (obj) {
+      var result = '';
+      obj = _.paramsObject(obj);
+      for(var x in obj) {
+        result = result + x + '=' + obj[x] + '&';
+      }
+      return result;
+    },
+
+    /**
      * Returns object that 'path' leads to in 'object' properties.
      */
     getByPath: function(object, path) {
@@ -72,7 +122,7 @@
       });
     },
 
-    // serialize DOM fragment to string
+    /* serialize DOM fragment to string */
     serializeObject: function(dom) {
       var o = {};
       var a = dom.serializeArray();
@@ -136,3 +186,31 @@ if (!Array.prototype.filter) {
     return res;
   };
 }
+
+// Date
+
+if ( !Date.prototype.toISOString ) {
+  ( function() {
+
+    function pad(number) {
+      var r = String(number);
+      if ( r.length === 1 ) {
+        r = '0' + r;
+      }
+      return r;
+    }
+
+    Date.prototype.toISOString = function() {
+      return this.getUTCFullYear()
+          + '-' + pad( this.getUTCMonth() + 1 )
+          + '-' + pad( this.getUTCDate() )
+          + 'T' + pad( this.getUTCHours() )
+          + ':' + pad( this.getUTCMinutes() )
+          + ':' + pad( this.getUTCSeconds() )
+          + '.' + String( (this.getUTCMilliseconds()/1000).toFixed(3) ).slice( 2, 5 )
+          + 'Z';
+    };
+
+  }() );
+}
+
