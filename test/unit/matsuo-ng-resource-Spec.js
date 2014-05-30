@@ -1,4 +1,4 @@
-/// <reference path="counter.js">
+
 "use strict";
 
 
