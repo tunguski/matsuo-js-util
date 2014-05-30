@@ -1,24 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 
-    <title>matsuo-js-util</title>
+  <title>matsuo-js-util</title>
+
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="main.css" />
 
 </head>
 <body>
-	<div ng-view></div>
 
-	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-touch/angular-touch.min.js"></script>
-	
-	<script type="text/javascript" src="js-util.js"></script>
-	<!--<script type="text/javascript" src="js-util.min.js"></script>-->
-	
-	<script type="text/javascript" src="app.js"></script>
-	
-	<script type="text/javascript" src="pages/home/HomeCtrl.js"></script>
+  <header>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Matsuo IT Common JS Utils</h1>
+        <p>Simple additional js utils, used in other libraries</p>
+        <p><a class="btn btn-info btn-lg" href="https://github.com/tunguski/matsuo-js-util">Github repository</a></p>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="feature-section">
+    <div class="container">
+      <h2></h2>
+      <p>
+      </p>
+    </div>
+  </div>
+
+
+  <div class="feature-section">
+    <div class="container">
+      <h2></h2>
+      <p>
+      </p>
+    </div>
+  </div>
+
+
+  <div class="feature-section">
+    <div class="container">
+      <h2></h2>
+      <p>
+      </p>
+    </div>
+  </div>
+
+
+  <div class="feature-section">
+    <div class="container">
+      <h2>License</h2>
+      This project is licensed under terms of <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0 License</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <h5>Matsuo IT 2014</h5>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/highlightjs/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+    $('code').each(function(i, e) {hljs.highlightBlock(e)});
+  </script>
 </body>
 </html>
