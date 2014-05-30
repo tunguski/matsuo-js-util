@@ -11,16 +11,16 @@ describe("Object", function() {
   };
 
   it("getByPath works", function() {
-    expect(Object.getByPath(obj, 'prop.value')).toBe('test');
+    expect(_.getByPath(obj, 'prop.value')).toBe('test');
   });
 
   it("setByPath works", function() {
-    Object.setByPath(obj, 'prop.value2', 7);
+    _.setByPath(obj, 'prop.value2', 7);
     expect(obj.prop.value2).toBe(7);
   });
 
   it("getOrCreate works", function() {
-    expect(Object.getOrCreate(obj, 'prop.value3.x.y')).toBeDefined();
+    expect(_.getOrCreate(obj, 'prop.value3.x.y')).toBeDefined();
     expect(obj.prop.value3.x.y).toBeDefined();
   });
 });
