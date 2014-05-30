@@ -1,0 +1,24 @@
+{
+	"name": "matsuo-js-util",
+	"version": "1.0.0",
+	"authors": [
+		"Marek Romanowski <marek.romanowski@gmail.com>"
+	],
+	"description": "Matsuo IT common js utils",
+	"keywords": [
+		""
+	],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"angular":"~1.2.0"
+	},
+	"devDependencies": {
+	}
+}
