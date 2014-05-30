@@ -27,8 +27,8 @@
     <div class="container">
       <h2>Small, invisible additions</h2>
       <p>
-        This library adds only small set of functions to <code>underscore</code> and <code>Array</code> type. This
-        additions are commonly used by other libraries used outside.
+        This library adds only small set of functions to <code>underscore</code>, <code>Array</code> and
+        <code>Date</code> type. This additions are commonly used by other libraries used outside.
       </p>
     </div>
   </div>
@@ -62,6 +62,21 @@
           <td><code>endsWith(str, suffix)</code></td>
           <td>Returns <code>true</code> if first parameter ends with suffix.</td>
         </tr>
+
+        <tr>
+          <td><code>filterRequestData(obj)</code></td>
+          <td>Removes from passed object all properties that value is empty string, null or undefined. Additionally
+            removes all properties which name start from '$' - that are angular internal properties.</td>
+        </tr>
+        <tr>
+          <td><code>paramsObject(obj)</code></td>
+          <td>Returns object that all properties are serialized to string.</td>
+        </tr>
+        <tr>
+          <td><code>toUrlParams(obj)</code></td>
+          <td>Transforms object to url query part.</td>
+        </tr>
+
         <tr>
           <td><code>getByPath(object, path)</code></td>
           <td>
@@ -153,6 +168,27 @@
       </table>
       <p>
       </p>
+    </div>
+  </div>
+
+
+  <div class="feature-section">
+    <div class="container">
+      <h2>Date object extensions</h2>
+      <table class="table">
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>Date.prototype.toISOString()</code></td>
+          <td>
+            <p>
+              Date to ISO string serialization. Added to Date type only if it does not exist.
+            </p>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 
