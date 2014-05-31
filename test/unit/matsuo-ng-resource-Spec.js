@@ -26,8 +26,11 @@ describe("Matsuo IT JS Util", function() {
     });
 
     it("paramsObject works", function() {
+      // not all browser compatible, but it's only for testing purposes
+      var date = new Date('2013-03-01T00:10:00.000Z');
+
       var obj = {
-        date: new Date(2013,2,1,1,10) ,
+        date: date,
         obj: { id: 3 },
         str: "str"
       };
