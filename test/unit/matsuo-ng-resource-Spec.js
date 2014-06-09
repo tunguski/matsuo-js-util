@@ -48,7 +48,7 @@ describe("Matsuo IT JS Util", function() {
         str: "str"
       };
 
-      expect(_.toUrlParams(obj)).toBe('date=2013-03-01T00:10:00.000Z&obj=[object Object]&str=str&');
+      expect(_.toUrlParams(obj)).toBe('date=2013-03-01T00:10:00.000Z&obj=[object Object]&str=str');
     });
 
     it("getByPath works", function() {

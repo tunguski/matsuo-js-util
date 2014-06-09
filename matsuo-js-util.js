@@ -80,7 +80,7 @@
       for(var x in obj) {
         result = result + x + '=' + obj[x] + '&';
       }
-      return result;
+      return _.endsWith(result, '&') ? result.substr(0, result.length - 1) : result;
     },
 
     /**
