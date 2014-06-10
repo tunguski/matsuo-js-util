@@ -51,6 +51,36 @@ describe("Matsuo IT JS Util", function() {
       expect(_.toUrlParams(obj)).toBe('date=2013-03-01T00:10:00.000Z&obj=[object Object]&str=str');
     });
 
+
+    it("lpad works", function() {
+      expect(_.lpad('xx', 4, '0')).toBe('00xx');
+    });
+
+    it("empty works", function() {
+      expect(_.empty('x')).toBe(true);
+    });
+
+    it("lastUrlElement works", function() {
+      expect(_.lastUrlElement(function () {
+        return '/api/test/7'
+      })).toBe('7');
+    });
+
+    it("clearObject works", function() {
+      expect(_.clearObject({ a: 7 }).a).toBe(undefined);
+    });
+
+    it("normalizeToI18nCode works", function() {
+      expect(_.normalizeToI18nCode('7.x.5')).toBe('_7_x_5');
+    });
+
+    it("getIdFromLocation works", function() {
+      expect(_.getIdFromLocation(function () {
+        return '/api/test/7'
+      })).toBe(7);
+    });
+
+
     it("getByPath works", function() {
       expect(_.getByPath(obj, 'prop.value')).toBe('test');
     });

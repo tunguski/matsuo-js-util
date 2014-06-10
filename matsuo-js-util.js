@@ -33,6 +33,47 @@
     strContains: function(str, it) { return str.indexOf(it) != -1; },
     endsWith: function(str, suffix) { return str.indexOf(suffix, str.length - suffix.length) !== -1; },
 
+    lpad: function (n, p, c) {
+      var pad_char = typeof c !== 'undefined' ? c : '0';
+      var pad = new Array(1 + p).join(pad_char);
+      return (pad + n).slice(-pad.length);
+    },
+
+    /**
+     * Value is considered empty if it is undefined, it is null, or (trimmed)
+     * matches ''. Function matches broader - 0 is empty too.
+     */
+    empty: function(value) {
+      if ( typeof value !== 'undefined' ) {
+        return !value || !!value.trim();
+      } else {
+        return true;
+      }
+    },
+
+    lastUrlElement: function(headers) {
+      var url = headers('Location');
+      return url.substring(url.lastIndexOf('/') + 1);
+    },
+
+    clearObject: function (object) {
+      _.keys(object).forEach(function (key) {
+        delete object[key];
+      });
+      return object;
+    },
+
+
+    /**
+     * If string starts from number, "_" prefix will be added. Each dot is converted to underscore.
+     */
+    normalizeToI18nCode: function(text) {
+      return (/^[0-9]/.test(text) ? '_' : '') + text.replace(/\./g, '_');
+    },
+
+
+    getIdFromLocation: function(headers) { return parseInt(_.lastUrlElement(headers)); },
+
     /**
      * Removes from passed object all properties that value is empty string, null or undefined. Additionally removes
      * all properties which name start from '$' - that are angular internal properties.
