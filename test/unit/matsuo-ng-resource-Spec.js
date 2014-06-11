@@ -97,7 +97,7 @@ describe("Matsuo IT JS Util", function() {
   });
 
   describe("Array extensions", function() {
-    describe("pushArray", function() {
+    it("pushArray", function() {
       var arr = ['a', 'b'].pushArray(['c', 'd']);
       expect(arr[0]).toBe('a');
       expect(arr[1]).toBe('b');
@@ -105,7 +105,7 @@ describe("Matsuo IT JS Util", function() {
       expect(arr[3]).toBe('d');
     });
 
-    describe("byProp", function() {
+    it("byProp", function() {
       var arr = [
         { id: 1, name: 'a' },
         { id: 2, name: 'b' }
@@ -115,7 +115,7 @@ describe("Matsuo IT JS Util", function() {
       expect(arr.byProp('name', 'b').id).toBe(2);
     });
 
-    describe("remove", function() {
+    it("remove", function() {
       var obj = { id: 7 };
       var arr = [
         { id: 1, name: 'a' },
@@ -128,7 +128,7 @@ describe("Matsuo IT JS Util", function() {
       expect(arr.length).toBe(2);
     });
 
-    describe("filter", function() {
+    it("filter", function() {
       var arr = [
         { id: 1, name: 'a' },
         { id: 2, name: 'b' },
