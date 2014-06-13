@@ -51,6 +51,23 @@ describe("Matsuo IT JS Util", function() {
       expect(_.toUrlParams(obj)).toBe('date=2013-03-01T00:10:00.000Z&obj=[object Object]&str=str');
     });
 
+    it("capitalize works", function() {
+      expect(_.capitalize('xx')).toBe('Xx');
+    });
+
+    it("uncapitalize works", function() {
+      expect(_.uncapitalize('XX')).toBe('xX');
+    });
+
+    it("isDefined works", function() {
+      expect(_.isDefined({})).toBe(true);
+      expect(_.isDefined()).toBe(false);
+    });
+
+    it("strContains works", function() {
+      expect(_.strContains('kosmos', 'smo')).toBe(true);
+    });
+
 
     it("lpad works", function() {
       expect(_.lpad('xx', 4, '0')).toBe('00xx');
@@ -58,6 +75,7 @@ describe("Matsuo IT JS Util", function() {
 
     it("empty works", function() {
       expect(_.empty('x')).toBe(true);
+      expect(_.empty(' ')).toBe(false);
     });
 
     it("lastUrlElement works", function() {
@@ -138,6 +156,17 @@ describe("Matsuo IT JS Util", function() {
       expect(arr.filter(function (element) { return element.name === 'a'; }).length).toBe(2);
       expect(arr.filter(function (element) { return element.id === 1; }).length).toBe(1);
     });
+  });
+
+  it("array_filter works", function() {
+    var arr = matsuo_js_util.array_filter.call([0, 1, 2, 3], function (val) { return val > 1; });
+    expect(arr.length).toBe(2);
+    expect(arr[0]).toBe(2);
+    expect(arr[1]).toBe(3);
+  });
+
+  it("date_toISOString works", function() {
+    expect(matsuo_js_util.date_toISOString.call(new Date(2014, 3, 3))).toBe('2014-04-02T22:00:00.000Z');
   });
 });
 

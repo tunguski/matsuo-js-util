@@ -7,6 +7,7 @@
 
 'use strict';
 
+var matsuo_js_util = {};
 
 (function() {
   /**
@@ -44,11 +45,7 @@
      * matches ''. Function matches broader - 0 is empty too.
      */
     empty: function(value) {
-      if ( typeof value !== 'undefined' ) {
-        return !value || !!value.trim();
-      } else {
-        return true;
-      }
+      return (!(typeof value !== 'undefined')) || (!value || !!value.trim());
     },
 
     lastUrlElement: function(headers) {
@@ -162,23 +159,6 @@
         return object[n];
       });
     },
-
-    /* serialize DOM fragment to string */
-    serializeObject: function(dom) {
-      var o = {};
-      var a = dom.serializeArray();
-      $.each(a, function() {
-        if (o[dom.name] !== undefined) {
-          if (!o[dom.name].push) {
-            o[dom.name] = [o[dom.name]];
-          }
-          o[dom.name].push(dom.value || '');
-        } else {
-          o[dom.name] = dom.value || '';
-        }
-      });
-      return o;
-    }
   });
 
 
@@ -202,55 +182,54 @@
     }
   };
 
+  matsuo_js_util.array_filter = function(fun /*, thisp*/) {
+    var len = this.length;
+    if (typeof fun != "function")
+      throw new TypeError();
+
+    var res = new Array();
+    var thisp = arguments[1];
+    for (var i = 0; i < len; i++)
+    {
+      if (i in this)
+      {
+        var val = this[i]; // in case fun mutates this
+        if (fun.call(thisp, val, i, this))
+          res.push(val);
+      }
+    }
+
+    return res;
+  };
+
   // array.filter
   if (!Array.prototype.filter) {
-    Array.prototype.filter = function(fun /*, thisp*/)
-    {
-      var len = this.length;
-      if (typeof fun != "function")
-        throw new TypeError();
-
-      var res = new Array();
-      var thisp = arguments[1];
-      for (var i = 0; i < len; i++)
-      {
-        if (i in this)
-        {
-          var val = this[i]; // in case fun mutates this
-          if (fun.call(thisp, val, i, this))
-            res.push(val);
-        }
-      }
-
-      return res;
-    };
+    Array.prototype.filter = matsuo_js_util.array_filter;
   }
 
 
   // Date
 
+  function pad(number) {
+    var r = String(number);
+    if ( r.length === 1 ) {
+      r = '0' + r;
+    }
+    return r;
+  }
+
+  matsuo_js_util.date_toISOString = function() {
+    return this.getUTCFullYear()
+        + '-' + pad( this.getUTCMonth() + 1 )
+        + '-' + pad( this.getUTCDate() )
+        + 'T' + pad( this.getUTCHours() )
+        + ':' + pad( this.getUTCMinutes() )
+        + ':' + pad( this.getUTCSeconds() )
+        + '.' + String( (this.getUTCMilliseconds()/1000).toFixed(3) ).slice( 2, 5 )
+        + 'Z';
+  };
+
   if ( !Date.prototype.toISOString ) {
-    ( function() {
-
-      function pad(number) {
-        var r = String(number);
-        if ( r.length === 1 ) {
-          r = '0' + r;
-        }
-        return r;
-      }
-
-      Date.prototype.toISOString = function() {
-        return this.getUTCFullYear()
-            + '-' + pad( this.getUTCMonth() + 1 )
-            + '-' + pad( this.getUTCDate() )
-            + 'T' + pad( this.getUTCHours() )
-            + ':' + pad( this.getUTCMinutes() )
-            + ':' + pad( this.getUTCSeconds() )
-            + '.' + String( (this.getUTCMilliseconds()/1000).toFixed(3) ).slice( 2, 5 )
-            + 'Z';
-      };
-
-    }() );
+    Date.prototype.toISOString = matsuo_js_util.date_toISOString
   }
 })();
