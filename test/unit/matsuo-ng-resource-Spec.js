@@ -166,7 +166,7 @@ describe("Matsuo IT JS Util", function() {
   });
 
   it("date_toISOString works", function() {
-    expect(matsuo_js_util.date_toISOString.call(new Date(2014, 3, 3))).toBe('2014-04-02T22:00:00.000Z');
+    expect(matsuo_js_util.date_toISOString.call(new Date(1393887600000))).toBe('2014-03-03T23:00:00.000Z');
   });
 });
 
