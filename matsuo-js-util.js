@@ -203,9 +203,7 @@ var matsuo_js_util = {};
   };
 
   // array.filter
-  if (!Array.prototype.filter) {
-    Array.prototype.filter = matsuo_js_util.array_filter;
-  }
+  Array.prototype.filter = Array.prototype.filter || matsuo_js_util.array_filter;
 
 
   // Date
@@ -229,7 +227,5 @@ var matsuo_js_util = {};
         + 'Z';
   };
 
-  if ( !Date.prototype.toISOString ) {
-    Date.prototype.toISOString = matsuo_js_util.date_toISOString
-  }
+  Date.prototype.toISOString = Date.prototype.toISOString || matsuo_js_util.date_toISOString;
 })();
