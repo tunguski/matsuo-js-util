@@ -165,6 +165,13 @@ describe("Matsuo IT JS Util", function() {
     expect(arr[1]).toBe(3);
   });
 
+  it("array_filter throws exception when non-function passed", function() {
+    function throwException() {
+      matsuo_js_util.array_filter.call([0, 1, 2, 3], 'string');
+    }
+    expect(throwException).toThrow();
+  });
+
   it("date_toISOString works", function() {
     expect(matsuo_js_util.date_toISOString.call(new Date(1393887600000))).toBe('2014-03-03T23:00:00.000Z');
   });
