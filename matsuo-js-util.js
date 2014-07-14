@@ -28,11 +28,21 @@ var matsuo_js_util = {};
   }
 
   _.mixin({
-    uncapitalize: function(string) { return string.charAt(0).toLowerCase() + string.substring(1); },
-    capitalize: function(string) { return string.charAt(0).toUpperCase() + string.substring(1); },
-    isDefined: function(object) { return !_.isUndefined(object); },
-    strContains: function(str, it) { return str.indexOf(it) != -1; },
-    endsWith: function(str, suffix) { return str.indexOf(suffix, str.length - suffix.length) !== -1; },
+    uncapitalize: function(string) {
+      return string.charAt(0).toLowerCase() + string.substring(1);
+    },
+    capitalize: function(string) {
+      return string.charAt(0).toUpperCase() + string.substring(1);
+    },
+    isDefined: function(object) {
+      return !_.isUndefined(object);
+    },
+    strContains: function(str, it) {
+      return str.indexOf(it) != -1;
+    },
+    endsWith: function(str, suffix) {
+      return str.indexOf(suffix, str.length - suffix.length) !== -1;
+    },
 
     lpad: function (n, p, c) {
       var pad_char = typeof c !== 'undefined' ? c : '0';
