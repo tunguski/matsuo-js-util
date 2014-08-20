@@ -106,6 +106,8 @@ var matsuo_js_util = {};
       function serialize(value) {
         if (value instanceof Date) {
           return value.toISOString();
+        } else if (moment && moment.isMoment(value)) {
+          return value.valueOf();
         } else {
           return value.toString();
         }
