@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'bower_components/underscore/underscore.js',
+      'bower_components/moment/moment.js',
       'matsuo-js-util.js',
       'test/**/*.js'
     ],
