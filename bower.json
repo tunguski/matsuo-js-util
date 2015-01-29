@@ -17,8 +17,12 @@
     "tests"
   ],
   "dependencies": {
-    "underscore": "~1.6.0",
-    "moment": "~2.7.0"
+    "underscore": "~1.7.0",
+    "moment": "~2.9.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "resolutions": {
+    "underscore": "~1.7.0",
+    "moment": "~2.9.0"
+  }
 }
