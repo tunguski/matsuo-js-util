@@ -29,6 +29,7 @@ describe("Matsuo IT JS Util", function() {
       var obj = {
         // not all browser compatible, but it's only for testing purposes
         date: new Date('2013-03-01T00:10:00.000Z'),
+        moment: moment('2013-03-01T00:10:00.000Z'),
         obj: { id: 3 },
         str: "str"
       };
@@ -36,6 +37,7 @@ describe("Matsuo IT JS Util", function() {
       var result = _.paramsObject(obj);
 
       expect(result.date).toBe('2013-03-01T00:10:00.000Z');
+      expect(result.moment).toBe(1362096600000);
       expect(result.obj).toBe('[object Object]');
       expect(result.str).toBe('str');
     });
