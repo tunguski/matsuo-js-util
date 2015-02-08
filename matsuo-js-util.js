@@ -87,12 +87,14 @@ var matsuo_js_util = {};
      */
     filterRequestData: function(obj) {
       for(var x in obj) {
-        if(obj[x] == ''
-            || obj[x] == null
-            || obj[x] == undefined
-          // angular properties
-            || x.indexOf('$') == 0)
+        if (obj[x] === ''
+            || obj[x] === null
+            || obj[x] === undefined
+            // angular properties
+            || x.indexOf('$') === 0) {
+          var toRemove = obj[x];
           delete obj[x];
+        }
       }
 
       return obj;
